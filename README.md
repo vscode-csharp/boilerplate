@@ -29,7 +29,27 @@ or:
 * [`dotnet run`](https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-run) to run your application from the source code. Relies on `dotnet build` to build source inputs before launching the program.
 * `code .` to open Visual Studio Code for current location.
 
-In the following sections we present a step by step guide to setup a VS Code solution with libraries ([Primes](tree/master/src/Primes) and [Fibonacci](tree/master/src/Fibonacci)), a console application ([App](tree/master/src/App) and unit tests ([Primes.Tests](tree/master/test/Primes.Tests) and [Fibonacci.Tests](tree/master/test/Fibonacci.Tests)). If you want to just check the final result then clone this repo and run the following commands in the root folder:
+In the following sections we present a step by step guide to setup a VS Code solution with libraries ([Primes](tree/master/src/Primes) and [Fibonacci](tree/master/src/Fibonacci)), a console application ([App](tree/master/src/App)) and unit tests ([Primes.Tests](tree/master/test/Primes.Tests) and [Fibonacci.Tests](tree/master/test/Fibonacci.Tests)). If you want to just check the final result then clone this repo and run the following commands in the root folder:
 * `code .` to open VS Code for this solution
 * Type `Ctr + Shif + B` to build the solution
 * Type `Ctr + F5` to run `App` project
+
+## Folders structure
+
+Create the following projects folders structure (NOTE: create only folders and **not the files**):
+
+```
+/<solution name>
+|__global.json
+|__/src
+   |__/<library name>
+      |__Source Files
+      |__project.json
+   |.../ Other libraries or applications
+|__/test
+   |__/<library name>.Test
+      |__Test Files
+      |__project.json
+```
+
+Each library , application, or unit test project will contain its own folder with its own `project.json` file inside it. In the next section we will initialize those `project.json` files.
