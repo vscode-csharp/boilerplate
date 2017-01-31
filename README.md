@@ -2,12 +2,12 @@ Build a Visual Studio Code C# solution for .Net Core with unit tests from the sc
 
 Table of contents:
 
-1. Installation
-2. Commands
-3. Folders structure
-4. Setup libraries and application projects
-5. Setup unit tests project
-6. Setup solution build
+1. [Installation](#installation)
+2. [Commands List](#commands-list)
+3. [Folders structure](#folders-structure)
+4. [Setup libraries and application projects](#setup-libraries-and-application-projects)
+5. [Setup unit tests project](#setup-unit-tests-project)
+6. [Setup solution build](#setup-solution-build)
 
 ## Installation
 
