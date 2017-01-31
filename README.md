@@ -87,3 +87,31 @@ Each library , application, or unit test project will contain its own folder wit
 
 **Note**: If your `App` refers all project libraries, then you just need to build the `App` project because `dotnet build` ensures to build target projects.
 
+## Setup unit tests project
+
+1. CD into unit tests project directory (e.g. `test/Fibonacci.Tests`)
+2. Run `dotnet new -t xunittest`. Check the generated `project.json`, which includes the test runner and dependencies for ` xunit` and `dotnet-test-xunit` Nuget libraries.
+3. Rename `Tests.cs` (e.g. [`FibSupplierTests.cs`](blob/master/test/Fibonacci.Tests/FibSupplierTests.cs))
+4. Open tests C\# file and rename the class according to the new file name (e.g. `class FibSupplierTests{…`)
+5. Rename the namespace according to the directory name (e.g. `namespace Fibonacci.Tests{…`)
+6. Add the dependency to `Fibonacci` project. Edit ` src/Fibonacci.Tests/project.json` file and add the property `"Fibonacci": {"target": "project"} ` to the `dependencies` object that will look like [Figure 1](#fig-test-project-json)
+
+  The following steps are **optional** because we will build the entire solution in the last section. However if you want to try your tests follow next steps:
+  
+7. Run [`dotnet restore`]( https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-restore), which calls into NuGet to restore the tree of dependencies.
+8. Check the `project.lock.json` files that contains a complete set of the graph of NuGet dependencies.
+9. Run `dotnet build` to compile source files.
+10. Execute `dotnet test` to run the tests from the console. The xunit test runner has the program entry point to run your tests from the Console. `dotnet test` starts the test runner, and provides a command line argument to the testrunner indicating the assembly that contains your tests.
+
+<a name="fig-test-project-json"><em>Figure 1:</em></a>
+```
+"dependencies": {
+  "System.Runtime.Serialization.Primitives": "4.1.1",
+  "xunit": "2.1.0",
+  "dotnet-test-xunit": "1.0.0-*",
+  "Fibonacci": {"target": "project"}
+}
+```
+
+Notice that you do not include any directory path to the `Fibonacci` project, because you created the project structure to match the expected organization of `src` and `test`. The `"target": "project"` element informs NuGet that it should look in project directories, not in the NuGet feed. Without this key, you might download a package with the same name as your internal library.
+
