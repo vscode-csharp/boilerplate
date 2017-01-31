@@ -115,3 +115,43 @@ Each library , application, or unit test project will contain its own folder wit
 
 Notice that you do not include any directory path to the `Fibonacci` project, because you created the project structure to match the expected organization of `src` and `test`. The `"target": "project"` element informs NuGet that it should look in project directories, not in the NuGet feed. Without this key, you might download a package with the same name as your internal library.
 
+## Setup solution build
+
+1. In the root directory create a `global.json` that contains the names of your `src` and `test` directories (e.g. `{ "projects": ["src", "test"] }`)
+2. Run [`dotnet restore`]( https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-restore), which calls into NuGet to restore the tree of dependencies (you can skip this step if you have already run it individually for each project previously).
+3. Check the `project.lock.json` files which appear on each project folder and contain a complete set of the graph of NuGet dependencies.
+4. Run `code .` on root directory that will open the Visual Studio Code for your solution
+5. Create the task runner file (`.vscode/tasks.json`) following one of the next options:
+
+   * Option A: Click `Yes` if appears the Warning message `Required assets to build and debug are missing from….`
+   * Option B: Type `Ctr + Shif + B` and choose `Configure Task Runner` and then `.NET Core -- Executes .NET Core build command`
+
+6. Open `.vscode/tasks.json` and add to `args` array the paths to your projects (e.g. `"${workspaceRoot}/src/App/project.json"` (use `\\` in Wndows)). Because `App` depends of all other projects it will build the `Fibonacci` and `Primes` projects first.
+
+7. If your solution includes an application (with property `"emitEntryPoint": true` in `buildOptions` of `project.json`) then run your application with `F5` or `Ctr + F5` (without debug). 
+
+8. Add a new entry in `launch.json` to run all your xunit tests. Add the following item to `configurations` property of `launch.json`:
+
+  ```
+  "configurations": [
+        {
+            "name": ".NET Core Xunit tests",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": " /usr/local/share/dotnet/dotnet ",
+            "args": ["test"],
+            "cwd": "${workspaceRoot}/test/Fibonacci.Tests",
+            "externalConsole": false,
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+       …
+  ]
+  ```
+
+  For windows users in `program` set to ` C:\\Program Files\\dotnet\\dotnet.exe ` 
+
+9. To run xunit tests select the `Debug` icon on left side bar and then `.Net Core Xunt tests` -- this is the name you gave in step 8.
+
+ 
