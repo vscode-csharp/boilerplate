@@ -5,7 +5,7 @@ Table of contents:
 1. Installation
 2. Commands
 3. Folders structure
-4. Setup libraries or application projects
+4. Setup libraries and application projects
 5. Setup unit tests project
 6. Setup solution build
 
@@ -53,3 +53,37 @@ Create the following projects folders structure (NOTE: create only folders and *
 ```
 
 Each library , application, or unit test project will contain its own folder with its own `project.json` file inside it. In the next section we will initialize those `project.json` files.
+
+## Setup libraries and application projects
+
+1. CD into library directory (e.g. `src/Fibonacci`)
+2. Run `dotnet new -t lib` to create the source project.
+3. Check the `project.json` which contains dependencies necessary to build the library.
+4. Rename `Library.cs` (e.g.[`FibSupplier.cs`](blob/master/src/Fibonacci/FibSupplier.cs))
+4. Open library C# file and rename the class according to the new file name (e.g. `class FibSupplier {…`)
+5. Rename the namespace according to the directory name (e.g. `namespace Fibonacci {…`)
+
+  Repeat these steps for each library or application. **For applications suppress the `-t lib` option** on `dotnet new` command. **Advice**: You should create an application because it will simplify the build configuration in VS Code.
+
+  In [`boilerplate` solution](/) we have 3 projects in [`src`](blob/master/src/) folder, corresponding to [`Fibonacci`](blob/master/src/Fibonacci/), [`Primes`](blob/master/src/Primes/) and [`App`](blob/master/src/App/).
+
+  **NOTE**: For small demos without unit tests this cheasheet finishes here. CD to your application folder and run [`dotnet restore`]( https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-restore), `dotnet build` and then `dotnet run`. 
+
+6. For each project that depends of other projects you must refer those projects in the `dependencies` property of `project.json`. For instance, the [`project.json`](blob/master/src/App/project.json) of `App` has the following dependencies:
+
+  ```
+  "dependencies": {
+    "Fibonacci": {"target": "project"},
+    "Primes": {"target": "project"}
+  }
+  ```
+
+  The following steps are **optional** because we will build the entire solution in the last section. However if you want to try each project individually you can follow next steps for each project:
+  
+7. Run [`dotnet restore`]( https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-restore), which calls into NuGet to restore the tree of dependencies.
+8. Check the `project.lock.json` files that contains a complete set of the graph of NuGet dependencies.
+9. Run `dotnet build` to compile source files.
+10. For applications run `dotnet run` that calls `dotnet <assembly.dll>` to run the target application (e.g. `dotnet src/App/bin/Debug/netcoreapp1.0/App.dll`)
+
+**Note**: If your `App` refers all project libraries, then you just need to build the `App` project because `dotnet build` ensures to build target projects.
+
