@@ -123,8 +123,8 @@ Notice that you do not include any directory path to the `Fibonacci` project, be
 4. Run `code .` on root directory that will open the Visual Studio Code for your solution
 5. Create the task runner file (`.vscode/tasks.json`) following one of the next options:
 
-   * Option A: Click `Yes` if appears the Warning message `Required assets to build and debug are missing from….`
-   * Option B: Type `Ctr + Shif + B` and choose `Configure Task Runner` and then `.NET Core -- Executes .NET Core build command`
+   * Option A: Click `Yes` if appears the Warning message `Required assets to build and debug are missing from….` <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/assets/imgs/img-required-asset.jpg" width="80%"/>
+   * Option B: Type `Ctr + Shif + B` and choose `Configure Task Runner` and then `.NET Core -- Executes .NET Core build command` <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/assets/imgs/img-no-task-runner.jpg" width="80%"/> <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/assets/imgs/img-dotnet-core-build.jpg" width="80%"/> 
 
 6. Open `.vscode/tasks.json` and add to `args` array the paths to your projects (e.g. `"${workspaceRoot}/src/App/project.json"` (use `\\` in Wndows)). Because `App` depends of all other projects it will build the `Fibonacci` and `Primes` projects first.
 
@@ -152,6 +152,8 @@ Notice that you do not include any directory path to the `Fibonacci` project, be
 
   For windows users in `program` set to ` C:\\Program Files\\dotnet\\dotnet.exe ` 
 
-9. To run xunit tests select the `Debug` icon on left side bar and then `.Net Core Xunt tests` -- this is the name you gave in step 8.
+9. To run xunit tests select the `Debug` icon on left side bar and then `.Net Core Xunt tests` -- this is the name you gave in step 8. <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/assets/imgs/img-xunit-debug.jpg" width="80%"/>
+
+10. You can run or debug each test individually by clicking on the corresponding option over each unit test method <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/assets/imgs/img-xunit-single-test.jpg" width="80%"/>
 
  
