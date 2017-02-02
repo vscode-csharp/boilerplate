@@ -1,4 +1,4 @@
-Build a Visual Studio Code C# solution for .Net Core with unit tests from the scratch.
+A boilerplate for Visual Studio Code C# solution .Net Core with unit tests.
 
 Table of contents:
 
@@ -29,7 +29,7 @@ or:
 * [`dotnet run`](https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-run) to run your application from the source code. Relies on `dotnet build` to build source inputs before launching the program.
 * `code .` to open Visual Studio Code for current location.
 
-In the following sections we present a step by step guide to setup a VS Code solution with libraries ([Primes](tree/master/src/Primes) and [Fibonacci](tree/master/src/Fibonacci)), a console application ([App](tree/master/src/App)) and unit tests ([Primes.Tests](tree/master/test/Primes.Tests) and [Fibonacci.Tests](tree/master/test/Fibonacci.Tests)). If you want to just check the final result then clone this repo and run the following commands in the root folder:
+In the following sections we present a step by step guide to setup a VS Code solution with libraries ([Primes](src/Primes) and [Fibonacci](src/Fibonacci)), a console application ([App](src/App)) and unit tests ([Primes.Tests](test/Primes.Tests) and [Fibonacci.Tests](test/Fibonacci.Tests)). If you want to just check the final result then clone this repo and run the following commands in the root folder:
 * `code .` to open VS Code for this solution
 * Type `Ctr + Shif + B` to build the solution
 * Type `Ctr + F5` to run `App` project
@@ -59,17 +59,17 @@ Each library , application, or unit test project will contain its own folder wit
 1. CD into library directory (e.g. `src/Fibonacci`)
 2. Run `dotnet new -t lib` to create the source project.
 3. Check the `project.json` which contains dependencies necessary to build the library.
-4. Rename `Library.cs` (e.g.[`FibSupplier.cs`](blob/master/src/Fibonacci/FibSupplier.cs))
+4. Rename `Library.cs` (e.g.[`FibSupplier.cs`](src/Fibonacci/FibSupplier.cs))
 4. Open library C# file and rename the class according to the new file name (e.g. `class FibSupplier {…`)
 5. Rename the namespace according to the directory name (e.g. `namespace Fibonacci {…`)
 
   Repeat these steps for each library or application. **For applications suppress the `-t lib` option** on `dotnet new` command. **Advice**: You should create an application because it will simplify the build configuration in VS Code.
 
-  In [`boilerplate` solution](/) we have 3 projects in [`src`](blob/master/src/) folder, corresponding to [`Fibonacci`](blob/master/src/Fibonacci/), [`Primes`](blob/master/src/Primes/) and [`App`](blob/master/src/App/).
+  In [`boilerplate` solution](/) we have 3 projects in [`src`](src/) folder, corresponding to [`Fibonacci`](src/Fibonacci/), [`Primes`](src/Primes/) and [`App`](src/App/).
 
   **NOTE**: For small demos without unit tests this cheasheet finishes here. CD to your application folder and run [`dotnet restore`]( https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-restore), `dotnet build` and then `dotnet run`. 
 
-6. For each project that depends of other projects you must refer those projects in the `dependencies` property of `project.json`. For instance, the [`project.json`](blob/master/src/App/project.json) of `App` has the following dependencies:
+6. For each project that depends of other projects you must refer those projects in the `dependencies` property of `project.json`. For instance, the [`project.json`](src/App/project.json) of `App` has the following dependencies:
 
   ```
   "dependencies": {
@@ -91,7 +91,7 @@ Each library , application, or unit test project will contain its own folder wit
 
 1. CD into unit tests project directory (e.g. `test/Fibonacci.Tests`)
 2. Run `dotnet new -t xunittest`. Check the generated `project.json`, which includes the test runner and dependencies for ` xunit` and `dotnet-test-xunit` Nuget libraries.
-3. Rename `Tests.cs` (e.g. [`FibSupplierTests.cs`](blob/master/test/Fibonacci.Tests/FibSupplierTests.cs))
+3. Rename `Tests.cs` (e.g. [`FibSupplierTests.cs`](test/Fibonacci.Tests/FibSupplierTests.cs))
 4. Open tests C\# file and rename the class according to the new file name (e.g. `class FibSupplierTests{…`)
 5. Rename the namespace according to the directory name (e.g. `namespace Fibonacci.Tests{…`)
 6. Add the dependency to `Fibonacci` project. Edit ` src/Fibonacci.Tests/project.json` file and add the property `"Fibonacci": {"target": "project"} ` to the `dependencies` object that will look like [Figure 1](#fig-test-project-json)
@@ -129,7 +129,9 @@ Notice that you do not include any directory path to the `Fibonacci` project, be
    
    * Option B: Type `Ctr + Shif + B` and choose `Configure Task Runner` and then `.NET Core -- Executes .NET Core build command`
    
-   <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-no-task-runner.jpg" width="70%"/> <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-dotnet-core-build.jpg" width="25%"/> 
+   <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-no-task-runner.jpg" width="70%"/>
+   
+   <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-dotnet-core-build.jpg" width="25%"/> 
 
 6. Open `.vscode/tasks.json` and add to `args` array the paths to your projects (e.g. `"${workspaceRoot}/src/App/project.json"` (use `\\` in Wndows)). Because `App` depends of all other projects it will build the `Fibonacci` and `Primes` projects first.
 
