@@ -129,7 +129,9 @@ Notice that you do not include any directory path to the `Fibonacci` project, be
    
    * Option B: Type `Ctr + Shif + B` and choose `Configure Task Runner` and then `.NET Core -- Executes .NET Core build command`
    
-   <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-no-task-runner.jpg" width="70%"/> <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-dotnet-core-build.jpg" width="25%"/> 
+   <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-no-task-runner.jpg" width="70%"/>
+   
+   <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-dotnet-core-build.jpg" width="25%"/> 
 
 6. Open `.vscode/tasks.json` and add to `args` array the paths to your projects (e.g. `"${workspaceRoot}/src/App/project.json"` (use `\\` in Wndows)). Because `App` depends of all other projects it will build the `Fibonacci` and `Primes` projects first.
 
