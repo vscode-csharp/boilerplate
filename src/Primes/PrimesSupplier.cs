@@ -45,7 +45,7 @@ namespace Primes
 
         private static Func<int> ContinueFrom(int candidate)
         {
-            if(candidate % 2 == 0) candidate++;
+            if(candidate % 2 == 0) candidate--;
             return () => {
                 do{ candidate += 2; } while(!IsPrime(candidate));
                 primes.Add(candidate);
