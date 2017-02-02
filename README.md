@@ -1,8 +1,16 @@
 A boilerplate for Visual Studio Code C# solution .Net Core with unit tests.
 
+In the following sections we present a step by step guide to setup a VS Code solution
+with libraries ([Primes](src/Primes) and [Fibonacci](src/Fibonacci)), a console application
+([App](src/App)) and unit tests ([Primes.Tests](test/Primes.Tests) and
+[Fibonacci.Tests](test/Fibonacci.Tests)).
+
+**If you want to just check the final result just jump to [Quick Setup](#quick-setup) after the [Installation](#installation)**.
+
 Table of contents:
 
 1. [Installation](#installation)
+2. [Quick Setup](#quick-setup)
 2. [Commands List](#commands-list)
 3. [Folders structure](#folders-structure)
 4. [Setup libraries and application projects](#setup-libraries-and-application-projects)
@@ -16,6 +24,14 @@ Table of contents:
 3. Open VS Code and click on Extensions (last icon of left side bar or `Ctrl + Shif + X`)
 4. Install the extension “_C# for Visual Studio Code (powered by OmniSharp_”
 
+## Quick Setup
+
+Clone this repo and run the following commands in the root folder:
+* `code .` to open VS Code for this solution
+* Type `Ctr + Shif + B` to build the solution
+* Type `Ctr + F5` to run `App` project
+* Select the `Debug` icon on left side bar and then `.Net Core Xunt tests` to run the unit tests.
+
 ## Commands list
 
 In this guide we use the following commands: 
@@ -28,11 +44,6 @@ or:
 
 * [`dotnet run`](https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-run) to run your application from the source code. Relies on `dotnet build` to build source inputs before launching the program.
 * `code .` to open Visual Studio Code for current location.
-
-In the following sections we present a step by step guide to setup a VS Code solution with libraries ([Primes](src/Primes) and [Fibonacci](src/Fibonacci)), a console application ([App](src/App)) and unit tests ([Primes.Tests](test/Primes.Tests) and [Fibonacci.Tests](test/Fibonacci.Tests)). If you want to just check the final result then clone this repo and run the following commands in the root folder:
-* `code .` to open VS Code for this solution
-* Type `Ctr + Shif + B` to build the solution
-* Type `Ctr + F5` to run `App` project
 
 ## Folders structure
 
