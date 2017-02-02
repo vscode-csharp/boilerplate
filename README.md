@@ -1,4 +1,4 @@
-Build a Visual Studio Code C# solution for .Net Core with unit tests from the scratch.
+A boilerplate for Visual Studio Code C# solution .Net Core with unit tests.
 
 Table of contents:
 
