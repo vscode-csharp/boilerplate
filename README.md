@@ -78,7 +78,7 @@ Each library , application, or unit test project will contain its own folder wit
 
   Repeat these steps for each library or application. **For applications suppress the `-t lib` option** on `dotnet new` command. **Advice**: You should create an application because it will simplify the build configuration in VS Code.
 
-  In [`boilerplate` solution](/) we have 3 projects in [`src`](src/) folder, corresponding to [`Fibonacci`](src/Fibonacci/), [`Primes`](src/Primes/) and [`App`](src/App/).
+  In `boilerplate` solution we have 3 projects in [`src`](src/) folder, corresponding to [`Fibonacci`](src/Fibonacci/), [`Primes`](src/Primes/) and [`App`](src/App/).
 
   **NOTE**: For small demos without unit tests this cheasheet finishes here. CD to your application folder and run [`dotnet restore`]( https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-restore), `dotnet build` and then `dotnet run`. 
 
