@@ -5,7 +5,7 @@ with libraries ([Primes](src/Primes) and [Fibonacci](src/Fibonacci)), a console 
 ([App](src/App)) and unit tests ([Primes.Tests](test/Primes.Tests) and
 [Fibonacci.Tests](test/Fibonacci.Tests)).
 
-**If you want to just check the final result just jump to [Quick Setup](#quick-setup) after the [Installation](#installation)**.
+**If you just want to check the final result, then jump to [Quick Setup](#quick-setup) after the [Installation](#installation)**.
 
 Table of contents:
 
@@ -31,6 +31,8 @@ Clone this repo and run the following commands in the root folder:
 * Type `Ctr + Shif + B` to build the solution
 * Type `Ctr + F5` to run `App` project
 * Select the `Debug` icon on left side bar and then `.Net Core Xunt tests` to run the unit tests.
+
+  <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-xunit-debug.jpg" width="25%"/>
 
 ## Commands list
 
@@ -177,5 +179,3 @@ Notice that you do not include any directory path to the `Fibonacci` project, be
 10. You can run or debug each test individually by clicking on the corresponding option over each unit test method
 
   <img src="https://raw.githubusercontent.com/vscode-csharp/boilerplate/master/assets/imgs/img-xunit-single-test.jpg" width="25%"/>
-
- 
