@@ -111,10 +111,11 @@ Each library , application, or unit test project will contain its own folder wit
 
   The following steps are **optional** because we will build the entire solution in the last section. However if you want to try your tests follow next steps:
   
-7. Run [`dotnet restore`]( https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-restore), which calls into NuGet to restore the tree of dependencies.
-8. Check the `project.lock.json` files that contains a complete set of the graph of NuGet dependencies.
-9. Run `dotnet build` to compile source files.
-10. Execute `dotnet test` to run the tests from the console. The xunit test runner has the program entry point to run your tests from the Console. `dotnet test` starts the test runner, and provides a command line argument to the testrunner indicating the assembly that contains your tests.
+7. In the root directory create a global.json that contains the names of your src and test directories (e.g. { "projects": ["src", "test"] })
+8. Run [`dotnet restore`]( https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet-restore), which calls into NuGet to restore the tree of dependencies.
+9. Check the `project.lock.json` files that contains a complete set of the graph of NuGet dependencies.
+10. Run `dotnet build` to compile source files.
+11. Execute `dotnet test` to run the tests from the console. The xunit test runner has the program entry point to run your tests from the Console. `dotnet test` starts the test runner, and provides a command line argument to the testrunner indicating the assembly that contains your tests.
 
 <a name="fig-test-project-json"><em>Figure 1:</em></a>
 ```
